@@ -1,17 +1,36 @@
-var consultaCep = fetch('https://viacep.com.br/ws/0100100/json/')   // Busquei a api de consultar cep no site e salvei na variável de consultaCep
-.then(resposta => resposta.json()) // then serve para pegar uma informação
-.then(r => {
-    if (r.erro){
-        throw Error("Cep não encontrado")
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// 
+// 1 modelo de como fazer um código Assincrono
+// 
+// var consultaCep = fetch('https://viacep.com.br/ws/01001000/json/')   // Busquei a api de consultar cep no site e salvei na variável de consultaCep
+// .then(resposta => resposta.json()) // then serve para pegar uma informação
+// .then(r => {
+    // if (r.erro){
+        // throw Error("Cep não encontrado")
+// 
+    // }
+    // else{
+        // console.log(r)
+        //  }
+// }) // fetch é para usar API's externas via link
+// 
+// .catch(error => console.log(error))  // 
+// .finally(mensagem => console.log('Processo Concluído'))
+// 
+// 
+// console.log(consultaCep)
 
-    }
-    else{
-        console.log(r)
-         }
-}) // fetch é para usar API's externas via link
 
-.catch(error => console.log(error))  // 
-.finally(mensagem => console.log('Processo Concluído'))
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+// 2 modelo de como fazer um código Assincrono
 
-console.log(consultaCep)
+async function buscaEndereco() {
+
+    var consultaCep = await fetch('https://viacep.com.br/ws/01001000/json/')
+    var consultaCepConvertida = await consultaCep.json()
+    console.log(consultaCepConvertida)
+}
+
+buscaEndereco()
