@@ -24,13 +24,19 @@
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// 2 modelo de como fazer um código Assincrono
+// 2 modelo de como fazer um código Assincrono e usando o try catch
 
 async function buscaEndereco() {
-
-    var consultaCep = await fetch('https://viacep.com.br/ws/01001000/json/')
+    try{
+    var consultaCep = await fetch('https://viacep.com.br/ws/01001250/json/')
     var consultaCepConvertida = await consultaCep.json()
-    console.log(consultaCepConvertida)
+    if(consultaCepConvertida.erro){
+        throw Error('Esse CEP não existe!')
+    }
+    console.log(consultaCepConvertida)}
+    catch(erro){
+        console.log(erro)
+    }
 }
 
 buscaEndereco()
