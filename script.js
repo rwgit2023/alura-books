@@ -26,17 +26,48 @@
 
 // 2 modelo de como fazer um código Assincrono e usando o try catch
 
-async function buscaEndereco() {
+// async function buscaEndereco() {
+    // try{
+    // var consultaCep = await fetch('https://viacep.com.br/ws/01001250/json/')
+    // var consultaCepConvertida = await consultaCep.json()
+    // if(consultaCepConvertida.erro){
+        // throw Error('Esse CEP não existe!')
+    // }
+    // console.log(consultaCepConvertida)}
+    // catch(erro){
+        // console.log(erro)
+    // }
+// }
+// 
+// buscaEndereco()
+// 
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// 
+// 3 modelo de como fazer um código Assincrono e usando o try catch + buscando variáveis setáveis pelo usuário
+
+
+async function buscaEndereco(cep) {
     try{
-    var consultaCep = await fetch('https://viacep.com.br/ws/01001250/json/')
+    var consultaCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
     var consultaCepConvertida = await consultaCep.json()
     if(consultaCepConvertida.erro){
         throw Error('Esse CEP não existe!')
     }
-    console.log(consultaCepConvertida)}
+    console.log(consultaCepConvertida)
+    return (consultaCepConvertida)}
+
     catch(erro){
         console.log(erro)
     }
 }
+
+let ceps = ['01001000','01001001']
+console.log(ceps.map)
+let conjuntoCeps = ceps.map(valores => buscaEndereco(valores))
 
 buscaEndereco()
