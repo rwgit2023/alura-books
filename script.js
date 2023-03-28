@@ -53,7 +53,7 @@
 
 async function buscaEndereco(cep) {
     try{
-    var consultaCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    var consultaCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`)  // \PROMISE PONTUAL
     var consultaCepConvertida = await consultaCep.json()
     if(consultaCepConvertida.erro){
         throw Error('Esse CEP não existe!')
@@ -66,8 +66,10 @@ async function buscaEndereco(cep) {
     }
 }
 
-let ceps = ['01001000','01001001']
-console.log(ceps.map)
-let conjuntoCeps = ceps.map(valores => buscaEndereco(valores))
+// let ceps = ['01001000','01001001'] // Foi criado 2 arrays contendo os ceps
+// let conjuntoCeps = ceps.forEach(valores => buscaEndereco(valores))
+// console.log(conjuntoCeps)
+// Promise.all(conjuntoCeps).then(respostas => console.log(respostas))
+// buscaEndereco()
 
-buscaEndereco()
+
