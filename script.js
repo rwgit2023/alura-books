@@ -24,7 +24,8 @@
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// 2 modelo de como fazer um código Assincrono e usando o try catch
+// 2 modelo de como fazer um código Assincrono e usando o try catch               
+//O await só serve para funções assincronas ( ele espera algo acontecer, mas isso é tao rapido que parece assyncrono)
 
 // async function buscaEndereco() {
     // try{
@@ -43,13 +44,13 @@
 // 
 
 
-
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // 
 // 3 modelo de como fazer um código Assincrono e usando o try catch + buscando variáveis setáveis pelo usuário
 
+// ESSE PASSO É PARA FAZER CONSULTAS DINÂMICAS
 
 async function buscaEndereco(cep) {
     try{
@@ -58,18 +59,19 @@ async function buscaEndereco(cep) {
     if(consultaCepConvertida.erro){
         throw Error('Esse CEP não existe!')
     }
+
+    var cidade = document.getElementById('cidade')
+    var logradouro = document.getElementById  ('endereco')                             //Esses itens estão sendo pegos dentro do HTML (Cada campo do questionário)
+    var estado = document.getElementById('estado')
+
     console.log(consultaCepConvertida)
-    return (consultaCepConvertida)}
+    return consultaCepConvertida}
 
     catch(erro){
         console.log(erro)
     }
 }
 
-// let ceps = ['01001000','01001001'] // Foi criado 2 arrays contendo os ceps
-// let conjuntoCeps = ceps.forEach(valores => buscaEndereco(valores))
-// console.log(conjuntoCeps)
-// Promise.all(conjuntoCeps).then(respostas => console.log(respostas))
-// buscaEndereco()
 
-
+var cep = document.querySelector('#cep')
+cep.addEventListener("focusout", () => buscaEndereco(cep.value))
