@@ -53,6 +53,9 @@
 // ESSE PASSO É PARA FAZER CONSULTAS DINÂMICAS
 
 async function buscaEndereco(cep) {
+    var mensagemErro = document.getElementById('erro')    //Colocando dentro do HTML uma mensagem vazia... Se nao tem erro ela nao deve ter nada
+    mensagemErro.innerHTML = " "
+
     try{
     var consultaCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`)  // \PROMISE PONTUAL
     var consultaCepConvertida = await consultaCep.json()
@@ -64,11 +67,16 @@ async function buscaEndereco(cep) {
     var logradouro = document.getElementById  ('endereco')                             //Esses itens estão sendo pegos dentro do HTML (Cada campo do questionário)
     var estado = document.getElementById('estado')
 
+    cidade.value = consultaCepConvertida.cidade
+    logradouro.value = consultaCepConvertida.logradouro
+    estado.value = consultaCepConvertida.uf
+
     console.log(consultaCepConvertida)
     return consultaCepConvertida}
 
     catch(erro){
         console.log(erro)
+        mensagemErro.innerHTML = '<p>CEP inválido. Tente novamente!</p>'
     }
 }
 
