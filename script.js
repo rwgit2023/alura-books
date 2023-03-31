@@ -66,10 +66,12 @@ async function buscaEndereco(cep) {
     var cidade = document.getElementById('cidade')
     var logradouro = document.getElementById  ('endereco')                             //Esses itens estão sendo pegos dentro do HTML (Cada campo do questionário)
     var estado = document.getElementById('estado')
+    var bairro = document.getElementById('bairro')
 
     cidade.value = consultaCepConvertida.localidade
     logradouro.value = consultaCepConvertida.logradouro
     estado.value = consultaCepConvertida.uf
+    bairro.value = consultaCepConvertida.bairro
     console.log(consultaCepConvertida)
     
 
